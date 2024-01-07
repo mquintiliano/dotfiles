@@ -1,0 +1,66 @@
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
+
+{{ $packages := list 
+     // cli apps
+     "fd-find"
+     "fish"
+     "fzf"
+     "helix"
+     "htop"
+     "krb5-workstation"
+     "libstdc++-devel"
+     "lm_sensors"
+     "lshw"
+     "openldap-clients"
+     "p7zip"
+     "p7zip-plugins"
+     "podman"
+     "podman-compose"
+     "ripgrep"
+     "unrar"
+     "youtube-dl"
+     "neovim"
+     "nodejs-npm"
+     "jq
+     // development tools
+     "python3-ipython"
+     "cargo"
+     "rust"
+     "rust-src" -}}
+
+// Add gnome apps and extensions
+{{ if eq .chezmoi.osRelease.variantID "workstation" -}}
+{{ $packages = concat $packages (list
+     "gnome-extensions-app"
+     "gnome-shell-extension-caffeine"
+     "gnome-shell-extension-just-perfection"
+     "gnome-shell-extension-blur-my-shell"
+     "gnome-shell-extension-dash-to-dock"
+)-}}
+{{ end -}}
+
+// Add GUI apps
+{{ if not .headless -}}
+{{ $packages = concat $packages (list
+     "gimp"
+     "inkscape"
+) -}}
+{{ end -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+echo -e "\033[0;32m>>>>> Begin Setting Up Fedora Packages <<<<<\033[0m"
+
+{{ $sudo }} dnf upgrade -y --refresh
+{{ $sudo }} dnf install -y {{ $packages | join " " }}
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Fedora Packages <<<<<\033[0m"
+
+{{ end -}}

@@ -1,0 +1,29 @@
+[user]
+	name = Marcelo Quintiliano
+	email = 2864057+mquintiliano@users.noreply.github.com
+
+[core]
+  excludesfile = ~/.config/git/gitignore_global
+  pager = less -R
+	editor = vim
+
+[color]
+	ui = auto
+
+[init]
+	defaultBranch = main
+
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  last = log -1 HEAD
+  unstage = reset HEAD --
+
+# The contents of this file are included only for GitLab.com URLs
+[includeIf "hasconfig:remote.*.url:https://gitlab.com/**"]
+  path = ~/.config/git/config-gitlab
