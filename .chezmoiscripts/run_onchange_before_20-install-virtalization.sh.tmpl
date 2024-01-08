@@ -1,0 +1,25 @@
+// Install Virtualization support packages
+$chassisType = (output "hostnamectl" "--json=short" | mustFromJson).Chassis
+
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo =  "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+if [ $chassisType != "vm"]; then
+  wget https://fedorapeople.org/groups/virt/virtio-win/virtio-win.repo \
+  -O /etc/yum.repos.d/virtio-win.repo
+
+  {{ $sudo }}dnf group install -y --with-optional virtualization
+  {{ $sudo }}dnf install -y virtio-win
+
+  {{ $sudo }}usermod -a -G libvirt {{ .chezmoi.username}}
+fi
+
+{{ end -}}
