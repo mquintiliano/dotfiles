@@ -1,0 +1,11 @@
+// Install Oh My Fish and a few packages
+{{ if (and (eq .chezmoi.os "linux") (not .ephemeral)) -}}
+
+#!/bin/sh
+
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+fish install --path=~/.local/share/omf --config=~/.config/omf
+
+omf install bang-bang
+
+{{ end -}}
