@@ -1,7 +1,6 @@
 {{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
 
-{{ $packages := list 
-     // cli apps
+{{ $packages := list
      "fd-find"
      "fish"
      "fzf"
@@ -21,27 +20,26 @@
      "youtube-dl"
      "neovim"
      "nodejs-npm"
-     "jq
-     // development tools
+     "jq"
      "python3-ipython"
      "cargo"
      "rust"
      "rust-src" -}}
 
-// Add gnome apps and extensions
-{{ if eq .chezmoi.osRelease.variantID "workstation" -}}
+{{/* Add gnome apps and extensions */}}
+{{- if eq .chezmoi.osRelease.variantID "workstation" -}}
 {{ $packages = concat $packages (list
      "gnome-extensions-app"
      "gnome-shell-extension-caffeine"
      "gnome-shell-extension-just-perfection"
      "gnome-shell-extension-blur-my-shell"
      "gnome-shell-extension-dash-to-dock"
-)-}}
+) -}}
 {{ end -}}
 
-// Add GUI apps
-{{ if not .headless -}}
-{{ $packages = concat $packages (list
+{{/* Add GUI apps */}}
+{{- if not .headless -}}
+{{- $packages = concat $packages (list
      "gimp"
      "inkscape"
 ) -}}
@@ -56,11 +54,7 @@
 
 set -eufo pipefail
 
-echo -e "\033[0;32m>>>>> Begin Setting Up Fedora Packages <<<<<\033[0m"
-
 {{ $sudo }}dnf upgrade -y --refresh
 {{ $sudo }}dnf install -y {{ $packages | join " " }}
-
-echo -e "\033[0;32m>>>>> Finish Setting Up Fedora Packages <<<<<\033[0m"
 
 {{ end -}}

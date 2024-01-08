@@ -1,7 +1,6 @@
-// Install Virtualization support packages
-$chassisType = (output "hostnamectl" "--json=short" | mustFromJson).Chassis
+{{/* Install Virtualization support packages */}}
 
-{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
+{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
 
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
@@ -10,9 +9,11 @@ $chassisType = (output "hostnamectl" "--json=short" | mustFromJson).Chassis
 
 #!/bin/bash
 
+chassisType=$(hostnamectl --json=short | jq .Chassis | tr -d '"')
+
 set -eufo pipefail
 
-if [ $chassisType != "vm"]; then
+if [ $chassisType != "vm" ]; then
   wget https://fedorapeople.org/groups/virt/virtio-win/virtio-win.repo \
   -O /etc/yum.repos.d/virtio-win.repo
 

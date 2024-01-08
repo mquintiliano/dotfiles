@@ -1,5 +1,5 @@
-// Install Oh My Fish and a few packages
-{{ if (and (eq .chezmoi.os "linux") (not .ephemeral)) -}}
+{{/* Install Oh My Fish and a few packages */}}
+{{- if (eq .chezmoi.os "linux") -}}
 
 #!/bin/sh
 

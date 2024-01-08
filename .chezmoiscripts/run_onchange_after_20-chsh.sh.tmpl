@@ -1,5 +1,5 @@
-// Set fish as default shell
-{{- if (not .ephemeral) -}}
+{{/* Set fish as default shell */}}
+{{- if (eq .chezmoi.os "linux") -}}
 
 #!/bin/bash
 
