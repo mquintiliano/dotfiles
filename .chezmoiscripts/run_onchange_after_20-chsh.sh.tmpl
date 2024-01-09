@@ -5,6 +5,8 @@
 
 set -eufo pipefail
 
-chsh -s /usr/bin/fish
+if [ $SHELL != $(which fish) ]; then
+  chsh -s $(which fish)
+fi
 
 {{ end -}}
