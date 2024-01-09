@@ -16,7 +16,7 @@ else
     echo "omf installed already! Updating..."
     omf update
     set bang (omf list | grep -o "bang-bang")
-    if test $bang = bang-bang
+    if test $bang = "bang-bang"
         echo "The bang-bang plugin is alredy installed, checking for updates..."
         omf update bang-bang
     else
