@@ -1,0 +1,18 @@
+{{/* Install Fisher plugin manager for Fish */}}
+{{- if (eq .chezmoi.os "linux") -}}
+
+#!/usr/bin/fish
+
+# Check for existing installation 
+if not type -q fisher
+    echo "Installing fisher"
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+    # Install bang-bang for Bash style history substitution 
+    fisher install oh-my-fish/plugin-bang-bang
+else
+    # Otherwise update fisher and installed plugins
+    fisher update
+end
+
+{{ end -}}
