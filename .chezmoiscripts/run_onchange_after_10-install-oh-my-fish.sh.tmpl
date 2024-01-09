@@ -1,0 +1,24 @@
+{{/* Install Oh My Fish plugin manager */}}
+{{- if (eq .chezmoi.os "linux") -}}
+
+#!/usr/bin/fish
+
+# Check for existing installation 
+if not type -q omf
+    echo "omf is not installed, Install oh-my-fish..."
+    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install >/tmp/install
+    fish /tmp/install -y --path=~/.local/share/omf --config=~/.config/omf
+else
+    echo "omf installed already! Updating..."
+    omf update
+    set bang (omf list | grep -o "bang-bang")
+    if test $bang = bang-bang
+        echo "The bang-bang plugin is alredy installed, checking for updates..."
+        omf update bang-bang
+    else
+        echo "Installing the bang-bang plugin..."
+        omf install $bang
+    end
+end
+
+{{ end -}}
