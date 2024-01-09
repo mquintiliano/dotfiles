@@ -8,6 +8,10 @@ if not type -q omf
     echo "omf is not installed, Install oh-my-fish..."
     curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install >/tmp/install
     fish /tmp/install -y --path=~/.local/share/omf --config=~/.config/omf
+
+    # Install bang-bang for Bash style history substitution
+    echo "Installing the bang-bang plugin..."
+    omf install $bang
 else
     echo "omf installed already! Updating..."
     omf update
