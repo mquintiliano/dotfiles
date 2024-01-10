@@ -1,0 +1,20 @@
+{{/* Install Petry for Python packaging and dependency management */}}
+{{- if (and (eq .chezmoi.os "linux") (ne .chezmoi.username "root")) -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+echo -e "\033[0;32m>>>>> Install Poetry for Python packaging and dependency management <<<<<\033[0m"
+
+# Check for existing installation 
+if [ -f ~/.local/bin/poetry ]; then
+        echo "Poetry is already installed. Updating..."
+        poetry self update
+else
+        curl -sSL https://install.python-poetry.org | python3 -
+fi
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Poetry <<<<<\033[0m"
+
+{{ end -}}
