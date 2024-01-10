@@ -4,6 +4,7 @@
      "fd-find"
      "fish"
      "fzf"
+     "google-chrome"
      "helix"
      "htop"
      "krb5-workstation"
@@ -34,6 +35,7 @@
      "gnome-shell-extension-just-perfection"
      "gnome-shell-extension-blur-my-shell"
      "gnome-shell-extension-dash-to-dock"
+     "gnome-tweaks"
 ) -}}
 {{ end -}}
 
@@ -54,7 +56,28 @@
 
 set -eufo pipefail
 
+echo -e "\033[0;32m>>>>> Begin Setting Up Fedora Linux Packages <<<<<\033[0m"
+
+# Increase max parallel downloads in DNF
+if [ ! $(grep -o "max_parallel_downloads" /etc/dnf/dnf.conf) ]; then
+  {{ $sudo }}cp /etc/dnf/dnf.conf{,.bkp}
+  {{ $sudo }}sed -i "$ a\max_parallel_downloads=10" /etc/dnf/dnf.conf
+fi
+
+# Enable RPM fusion repos
+if [ ! $(dnf repolist | grep -o -m 1 rpmfusion) ]; then
+  {{ $sudo }}dnf install -y \
+    https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+  {{ $sudo }}dnf install -y \
+    https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+fi
+
+# Ensure Google Chrome repo is enabled
+{{ $sudo }}dnf config-manager --enable google-chrome
+
 {{ $sudo }}dnf upgrade -y --refresh
 {{ $sudo }}dnf install -y {{ $packages | join " " }}
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Fedora Linux Packages <<<<<\033[0m"
 
 {{ end -}}
