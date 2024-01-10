@@ -14,7 +14,7 @@ chassisType=$(hostnamectl --json=short | jq .Chassis | tr -d '"')
 set -eufo pipefail
 
 if [ $chassisType != "vm" ]; then
-  wget https://fedorapeople.org/groups/virt/virtio-win/virtio-win.repo \
+  {{ $sudo }}wget https://fedorapeople.org/groups/virt/virtio-win/virtio-win.repo \
   -O /etc/yum.repos.d/virtio-win.repo
 
   {{ $sudo }}dnf group install -y --with-optional virtualization
