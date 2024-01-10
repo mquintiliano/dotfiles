@@ -1,0 +1,26 @@
+{{/* Install DuckDB */}}
+{{- if (eq .chezmoi.os "linux") -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+echo -e "\033[0;32m>>>>> Install DuckDB binary package into ~/.local/bin/ <<<<<\033[0m"
+
+dest_dir=~/.local/bin/
+
+# update as needed to install a newer version, visit: https://duckdb.org/
+current_version=v0.9.2
+download_url=https://github.com/duckdb/duckdb/releases/download/v0.9.2/duckdb_cli-linux-amd64.zip
+
+# Check for existing installation
+if [ ! -f ~/.local/bin/duckdb ]; then
+  echo "DuckDB is already installed"
+else
+  echo "installing DuckDB..."
+  curl -fLo /tmp/duckdb_cli-linux-amd64.zip && unzip -o "/tmp/duckdb_cli-linux-amd64.zip" -d $dest_dir/ && rm /tmp/duckdb_cli-linux-amd64.zip
+fi
+
+echo -e "\033[0;32m>>>>> Finish DuckDB installation <<<<<\033[0m"
+
+{{ end -}}
