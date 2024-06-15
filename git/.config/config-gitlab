@@ -5,7 +5,6 @@
 [user]
 email = 4940123-mquintiliano@users.noreply.gitlab.com
 # signingkey = 516494A79A5732A4
-signingkey = 2591C225D2BEBD4D
 
 [commit]
 gpgsign = false
