@@ -5,7 +5,7 @@ if status is-interactive
 end
 
 # Shell Variables
-#set -gx PATH ~/.local/bin $PATH
+set -gx PATH ~/.local/bin $PATH
 
 if type -q nvim
     set -gx EDITOR nvim
