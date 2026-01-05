@@ -1,6 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,rust,rust-analyzer,vim,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,rust,rust-analyzer,vim,visualstudiocode
 
+# Ignore Secrets
+secrets.fish
+conf.d/secrets.fish
+*.local.bash
+secrets.bash
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
