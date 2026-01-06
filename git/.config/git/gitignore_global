@@ -7,6 +7,9 @@ conf.d/secrets.fish
 *.local.bash
 secrets.bash
 
+# Claude Code local configuration
+**/.claude/settings.local.json
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
