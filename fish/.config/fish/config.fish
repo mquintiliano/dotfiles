@@ -6,8 +6,15 @@ end
 
 # Shell Variables
 
-# Add NPM bin directory to $PATH
-set -gx PATH ~/.npm-global/bin $PATH
+# Set fish's $PATH
+# list of additional dirs to be add to fish's PATH
+set -l extra_paths ~/.local/bin ~/.npm-global/bin
+
+for p in $extra_paths
+    if test -d $p
+        fish_add_path -m $p
+    end
+end
 
 if type -q nvim
     set -gx EDITOR nvim
