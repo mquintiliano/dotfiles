@@ -33,3 +33,6 @@ set -x BROWSER (type -p firefox)
 
 # Initialize Starship
 $HOME/.local/bin/starship init fish | source
+
+# opencode
+fish_add_path /home/mquintiliano/.opencode/bin
