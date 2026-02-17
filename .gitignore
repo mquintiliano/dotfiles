@@ -1,8 +1,6 @@
 # fish local-only files
-secrets.fish
 conf.d/secrets.fish
 
 # bash local-only files
 *.local.bash
-secrets.bash
 
