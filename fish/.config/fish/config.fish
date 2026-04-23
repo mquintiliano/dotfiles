@@ -29,7 +29,7 @@ if test -f ~/.config/fish/local_secrets.fish
 end
 
 # Set fish's default web browser
-set -x BROWSER (type -p firefox)
+# set -x BROWSER (type -p firefox)
 
 # Initialize Starship
 $HOME/.local/bin/starship init fish | source
