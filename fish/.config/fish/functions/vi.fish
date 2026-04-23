@@ -1,3 +1,3 @@
 function vi --wraps=vim --description 'vi alias for nvim'
-    nvim $argv
+    /usr/bin/nvim $argv
 end

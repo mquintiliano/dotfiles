@@ -1,3 +1,3 @@
-function vim --description 'vi alias for nvim'
-    nvim $argv
+function vim --description 'vim alias for nvim'
+    /usr/bin/nvim $argv
 end
