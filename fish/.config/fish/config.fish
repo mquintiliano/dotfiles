@@ -8,7 +8,7 @@ end
 
 # Set fish's $PATH
 # list of additional dirs to be add to fish's PATH
-set -l extra_paths ~/.local/bin ~/.npm-global/bin /opt/nvim-linux-x86_64/bin
+set -l extra_paths ~/.local/bin ~/.npm-global/bin
 
 for p in $extra_paths
     if test -d $p
