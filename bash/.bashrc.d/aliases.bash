@@ -13,4 +13,4 @@ alias tml='tmux ls'
 alias yamlcheck='python -c "import sys, yaml as y; y.safe_load(open(sys.argv[1]))"'
 
 # Neovim upstream alias
-NVIM_APPNAME="upstream" /opt/nvim-linux-x86_64/bin/nvim
+alias nvim='NVIM_APPNAME=upstream /opt/nvim-linux-x86_64/bin/nvim'
