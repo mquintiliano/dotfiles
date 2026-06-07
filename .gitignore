@@ -4,3 +4,5 @@ conf.d/secrets.fish
 # bash local-only files
 *.local.bash
 
+# Tmux plugins dir
+tmux/.config/tmux/plugins/
