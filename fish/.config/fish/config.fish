@@ -36,3 +36,6 @@ $HOME/.local/bin/starship init fish | source
 
 # opencode
 fish_add_path $HOME/.opencode/bin
+
+# zoxide
+zoxide init fish | source
