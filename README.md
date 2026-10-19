@@ -6,21 +6,23 @@
  +-+-+-+-+-+-+-+-+-+
 ```
 
-Personal configuration files for my Linux environment, kept under version
-control and installed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal *Linux dotfiles repository* — a simple, version-controlled home for my config files, installed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Usage
 
 Clone this repository into `~/.dotfiles`, then "stow" the packages you want:
 
+Note: the `stow` package contains the `.stowrc` file. Stow it first — it creates a `~/.stowrc` symlink, and after that you can run the commands below from any directory:
+
 ```sh
 cd ~/.dotfiles
+stow -S stow
+cd ~
 stow bash fish nvim tmux
 ```
 
-Stow creates symlinks from your home directory into the repository, so editing a file in this repo updates it in place. The included
-`stow/.stowrc` handles the common options (`--target=$HOME`,
-`--dir=$HOME/.dotfiles`, `--no-folding`), so no extra arguments are needed.
+Stow creates symlinks from your home directory into the repository, so
+editing a file in this repo updates it in place.
 
 To remove a package's links again, use `stow -D <package>`.
 
@@ -35,7 +37,6 @@ To remove a package's links again, use `stow -D <package>`.
 | `git` | Global git config, per-GitLab override, and global gitignore |
 | `herdr` | herdr configuration |
 | `ipython` | Default IPython profile |
-| `markdownlint-cli2` | markdownlint-cli2 configuration |
 | `nvim` | Neovim config built on [LazyVim](https://www.lazyvim.org/) (colorschemes, keymaps, tmux integration) |
 | `stow` | The `.stowrc` itself |
 | `tmux` | tmux config (custom `C-a` prefix, plugins) |
