@@ -42,5 +42,5 @@ keybind = performable:ctrl+k=goto_split:top
 keybind = performable:ctrl+l=goto_split:right
 # -- Misc --
 keybind = ctrl+shift+e=equalize_splits
-keybind = ctrl+shift+m=toggle_split_zoom
+keybind = ctrl+shift+z=toggle_split_zoom
 keybind = ctrl+shift+d=toggle_window_decorations
