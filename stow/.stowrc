@@ -1,3 +1,4 @@
 --target=$HOME
 --dir=$HOME/.dotfiles
 --verbose=1
+--no-folding
