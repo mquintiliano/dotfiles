@@ -1,12 +1,11 @@
-# My dotfiles
-
 ```text
- +-+-+-+-+-+-+-+-+-+
- |.|d|o|t|f|i|l|e|s|
- +-+-+-+-+-+-+-+-+-+
+       |       |    _|_) |           
+    _` |  _ \  __| |   | |  _ \  __| 
+   (   | (   | |   __| | |  __/\__ \ 
+_)\__,_|\___/ \__|_|  _|_|\___|____/ 
 ```
 
-Personal *Linux dotfiles repository* — a simple, version-controlled home for my config files, installed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal **Linux dotfiles repository** — a simple, version-controlled home for my config files, installed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Usage
 
