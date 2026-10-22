@@ -6,3 +6,8 @@ conf.d/secrets.fish
 
 # Tmux plugins dir
 tmux/.config/tmux/plugins/
+
+# herdr runtime files
+herdr/.config/herdr/*
+!herdr/.config/herdr/config.toml
+!herdr/.config/herdr/scripts/
