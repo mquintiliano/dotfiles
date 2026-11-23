@@ -4,7 +4,7 @@
 # =====================================================================
 
 # ---------- History (fish-like: shared, deduped, large) ----------
-HISTFILE=~/.zsh_history
+HISTFILE=~/.config/zsh/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt SHARE_HISTORY          # share across terminals
